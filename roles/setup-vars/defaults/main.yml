@@ -1,0 +1,4 @@
+---
+myvar: "this is my var content"
+myenv:
+  value1: "This is the env variable"

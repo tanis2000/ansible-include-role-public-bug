@@ -1,0 +1,20 @@
+---
+
+- hosts: all
+  name: "With roles"
+  roles:
+    - { role: setup-vars }
+    - { role: show-vars }
+  environment: "{{ myenv }}"
+
+- hosts: all
+  name: "Without roles"
+  vars:
+    roles:
+      - name: "setup-vars"
+      - name: "show-vars"
+  environment: "{{ myenv }}"
+
+  tasks:
+  - include_tasks: roles/a4-roles/tasks/main.yml
+    loop: "{{ roles }}"

@@ -1,0 +1,3 @@
+- name: setup-vars
+  debug:
+    msg: "Setting up vars"

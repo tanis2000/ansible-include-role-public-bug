@@ -1,0 +1,16 @@
+- name: a4-roles
+  when: item.when | default(omit)
+  block:
+    #- iclude_role:
+    - import_role:
+        name: "{{ item.name }}"
+        # This is `yes` because the `roles` tag shares defaults and vars with other roles in the same block
+        # If we include them this way, they aren't shared unless we make them all public, which is broader
+        # and unsafe though. See: https://docs.ansible.com/ansible/latest/modules/include_role_module.html#parameters
+        #public: yes
+  rescue:
+    - debug:
+        msg: "Do something within rescue"
+  always:
+    - debug:
+        msg: "Include completed"

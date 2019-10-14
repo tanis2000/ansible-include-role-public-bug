@@ -1,0 +1,3 @@
+- name: show-vars
+  debug:
+    msg: "Value of myvar: {{ myvar }}"
